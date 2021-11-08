@@ -68,8 +68,10 @@ class MoviesController:
     
     # util
     def __is_movie_json_valid(self, json,is_create):
+        if json is None:
+            return False
         if is_create == False:
-            if json is None or not json['id']:
+            if not json['id']:
                 return False
         if not json['title'] or not json['description']:
             return False
