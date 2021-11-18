@@ -1,4 +1,4 @@
 class DatabaseConfig:
-    MONGO_STR = "mongodb://8.tcp.ngrok.io:16138"
+    MONGO_STR = "mongodb+srv://konny:konny@cluster0.eytwk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
     DBNAME = "pad2"
-    COLLECTION_NAME = "movie"
+    COLLECTION_NAME = "movies"

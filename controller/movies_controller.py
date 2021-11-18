@@ -10,6 +10,12 @@ class MoviesController:
             return False
         return True    
     
+    def restrict_id(self, movie_id):
+        restict = self.get_movie_by_id(movie_id)
+        if restict != None:
+            return False
+        return True
+
     def get_all_movies(self):
         res = []
         for movie in self.repo.get_all():
@@ -25,7 +31,7 @@ class MoviesController:
 
     def update_movie(self, movie_json):
         if not self.__is_movie_json_valid(movie_json,False):
-            return {'error' : 'idi v zhopy debil NETY POLEI NYZHNIH SALYAM ALEYKUM'}
+            return {'error' : 'no required fields given'}
         
         movie = Movie()
         movie.set_id(movie_json['id'])
@@ -34,7 +40,7 @@ class MoviesController:
         
         # if movie exists
         if not self.__movie_exists(movie.get_id()):
-            return {'error' : 'idi v zhopy debil net etogo myvika y nas'}
+            return {'error' : 'we do not have this movie'}
         res = self.repo.update(movie)
         if res.matched_count > 0:
             return self.get_movie_by_id(movie.get_id())
@@ -42,8 +48,7 @@ class MoviesController:
     
     def add_movie(self,movie_json):
         if not self.__is_movie_json_valid(movie_json,True):
-            return {'error' : 'wrong or no field specified'}
-        
+            return {'error' : 'wrong or no field specified'}        
         movie = Movie()
         movie.generate_id()
         movie.set_title(movie_json['title'])
