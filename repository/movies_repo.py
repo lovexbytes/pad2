@@ -3,8 +3,8 @@ import bson.json_util as json_util
 movies = [
     {   
         'id':'1',
-        'title':'fisting s fistikom',
-        'desc':'eblya s padom',
+        'title':'titanic',
+        'desc':'DiCaprio freezes',
     },
 ]
 

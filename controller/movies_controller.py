@@ -30,8 +30,6 @@ class MoviesController:
         return res
 
     def update_movie(self, movie_json):
-        if not self.__is_movie_json_valid(movie_json,False):
-            return {'error' : 'no required fields given'}
         
         movie = Movie()
         movie.set_id(movie_json['id'])
@@ -72,12 +70,12 @@ class MoviesController:
         return {'error' : 'error during movie deletion'}
     
     # util
-    def __is_movie_json_valid(self, json,is_create):
+    def is_movie_json_valid(self, json,is_create):
         if json is None:
             return False
         if is_create == False:
-            if not json['id']:
+            if not "id" in json or not json['id']:
                 return False
-        if not json['title'] or not json['description']:
+        if not "title" in json  or not "description" in json or not json['title'] or not json['description']:
             return False
         return True

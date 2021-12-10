@@ -50,6 +50,6 @@ def delete_movie():
     return get_json_response(controller.delete_movie(request.get_json()))
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000, threaded=True)
+    app.run(debug=True, port=8001, threaded=True)
 
 
